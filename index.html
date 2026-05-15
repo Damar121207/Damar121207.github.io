@@ -596,6 +596,7 @@
         /* ========== FLOATING UI ELEMENTS ========== */
         .float-ui {
             position: absolute;
+            left: 20px;
             border: 1px solid rgba(255,94,0,0.2);
             background: rgba(18,18,18,0.6);
             backdrop-filter: blur(4px);
@@ -607,18 +608,13 @@
             pointer-events: none;
         }
 
-        .float-tag {
-            position: absolute;
-            background: linear-gradient(135deg, var(--orange), var(--gold-orange));
-            color: var(--black);
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.65rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            z-index: 1;
-            pointer-events: none;
-        }
+     .float-tag {
+    height: 130px; /* Sesuaikan ukuran logo yang Anda inginkan */
+    width: 130px;  /* Sesuaikan ukuran logo yang Anda inginkan */
+    position: absolute;
+    z-index: 99; /* Pastikan di atas elemen lain */
+    pointer-events: none;
+}
 
         /* ========== PRINT BUTTON ========== */
         .no-print {
@@ -657,7 +653,17 @@
             .timeline { flex-direction: column; gap: 20px; }
             .timeline::before { display: none; }
             .mockup-container { transform: scale(0.8); }
+
+            .float-tag {
+            height: 50px; /* Sesuaikan ukuran logo yang Anda inginkan */
+            width: 50px;  /* Sesuaikan ukuran logo yang Anda inginkan */
+            position: absolute;
+            z-index: 99; /* Pastikan di atas elemen lain */
+            pointer-events: none;
+            }
+
         }
+
     </style>
 </head>
 <body>
@@ -674,12 +680,13 @@
         <div class="geo-orb geo-orb-orange"></div>
         <div class="geo-orb geo-orb-gold"></div>
         <div class="grid-bg"></div>
-        
-        <div class="float-ui" style="top: 80px; left: 60px;">&lt;interface&gt; design.system</div>
-        <div class="float-ui" style="top: 140px; right: 80px;">user.experience // 2026</div>
-        <div class="float-tag" style="bottom: 180px; left: 70px;">Official Guidebook</div>
-        <div class="float-tag" style="top: 200px; right: 60px;">v1.0</div>
 
+        <div class="float-tag" style="top: 20px; left: 20px;">
+         <img src="Universitas Bina Insan Lubuklinggau.png" alt="" style="width: 100%; height: auto;">
+        </div>
+        <div class="float-tag" style="top: 20px; right: 20px;">
+         <img src="logo himpi.png" alt="" style="width: 100%; height: auto;">
+        </div>
         <div style="position: relative; z-index: 2;">
             <div class="cover-badge">Guidebook Resmi 2026</div>
             
@@ -831,26 +838,31 @@
             <div class="timeline">
                 <div class="timeline-item active">
                     <div class="timeline-dot">1</div>
-                    <div class="timeline-date">11–25 Mei 2026</div>
+                    <div class="timeline-date">18–25 Mei 2026</div>
                     <div class="timeline-label">Pendaftaran & Administrasi</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot">2</div>
-                    <div class="timeline-date">26–30 Mei 2026</div>
-                    <div class="timeline-label">Pengumpulan Karya Final</div>
+                    <div class="timeline-date">26 Mei 2026</div>
+                    <div class="timeline-label">Tecnichal meeting</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-dot">3</div>
+                    <div class="timeline-date">27–30 Mei 2026</div>
+                    <div class="timeline-label">Pengumpulan Karya Final</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
                     <div class="timeline-date">1–2 Juni 2026</div>
                     <div class="timeline-label">Penilaian & Kurasi</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-dot">4</div>
+                    <div class="timeline-dot">5</div>
                     <div class="timeline-date">4 Juni 2026</div>
                     <div class="timeline-label">Pengumuman Finalis</div>
                 </div>
                 <div class="timeline-item active">
-                    <div class="timeline-dot">5</div>
+                    <div class="timeline-dot">6</div>
                     <div class="timeline-date">6 Juni 2026</div>
                     <div class="timeline-label">Workshop & Pengumuman Pemenang</div>
                 </div>
@@ -861,7 +873,7 @@
                 <ul>
                     <li>Seluruh batas waktu mengacu pada Waktu Indonesia Barat (WIB / UTC+7).</li>
                     <li>Pendaftaran yang masuk setelah tanggal <strong>25 Mei 2026 pukul 23:59 WIB</strong> tidak akan diproses.</li>
-                    <li>Pengumpulan karya diperpanjang secara otomatis tidak tersedia; pastikan mengunggah sebelum deadline.</li>
+                    <li>Pengumpulan karya di harapkan tepat waktu, dan pastikan mengunggah sebelum deadline.</li>
                     <li>Pengumuman finalis akan dipublikasikan melalui Instagram resmi dan grup peserta.</li>
                 </ul>
             </div>
@@ -915,11 +927,12 @@
                     <li><strong>Orisinalitas Karya:</strong> Karya yang dikumpulkan wajib orisinal, hasil karya sendiri, dan belum pernah dilombakan atau dipublikasikan untuk kompetisi lain.</li>
                     <li><strong>Ketaatan Timeline:</strong> Peserta wajib mengikuti seluruh rangkaian jadwal yang telah ditetapkan panitia.</li>
                     <li><strong>Pemahaman Guidebook:</strong> Peserta wajib membaca, memahami, dan mengacu pada guidebook resmi ini sebagai pedoman utama selama kompetisi berlangsung.</li>
+                    <li>Di wajib kan untuk mem Follow akun Instagram Official lomba <strong>@digitalcreative.himpi</strong> dan HIMPI <strong>@himpi.univbi</strong></li>
                 </ol>
                 
                 <div style="margin-top: 1.5rem; padding: 16px; background: rgba(255,94,0,0.08); border-radius: 10px; border-left: 4px solid var(--orange);">
                     <strong style="color: var(--orange-light);">Biaya Pendaftaran:</strong><br>
-                    <span style="color: var(--grey-text);">Rp50.000 untuk semua kategori</span>
+                    <span style="color: var(--grey-text);"><strong>Rp50.000 untuk semua kategori</strong></span>
                 </div>
             </div>
 
@@ -1027,7 +1040,7 @@
             <div class="glass-card" style="margin-top: 1rem; border-color: var(--border-gold);">
                 <h3 style="margin-top: 0;">Format Penamaan File</h3>
                 <p style="margin-bottom: 0; font-family: monospace; font-size: 1.1rem; color: var(--gold); text-align: center; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px;">
-                    NamaPeserta_NamaKarya_UIUX2026
+                    NamaKETUA_NamaKarya_UIUX2026
                 </p>
                 <p style="margin-bottom: 0; margin-top: 8px; font-size: 0.85rem; text-align: center; color: var(--grey-text);">
                     Contoh: <em>AhmadRizki_SmartCampusApp_UIUX2026.fig</em>
@@ -1196,7 +1209,7 @@
         
         <div class="container">
             <h2><span class="section-num">14</span>Pemenang dan Hadiah</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Penghargaan diberikan untuk <strong>5 peringkat terbaik</strong> pada masing-masing kategori.</p>
+            <p style="text-align: center; margin-bottom: 2rem;">Penghargaan diberikan untuk <strong>3 peringkat terbaik</strong> pada masing-masing kategori.</p>
             
             <div class="prize-grid">
                 <div class="prize-category">
@@ -1204,24 +1217,19 @@
                     <ul class="prize-list">
                         <li>
                             <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;">🥇 Juara 1</div>
-                            <div class="prize-amount">Rp750.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Merchandise</div>
+                            <div class="prize-amount">Rp600.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
                             <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;">🥈 Juara 2</div>
-                            <div class="prize-amount">Rp500.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Merchandise</div>
+                            <div class="prize-amount">Rp450.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
                             <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;">🥉 Juara 3</div>
-                            <div class="prize-amount">Rp350.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Merchandise</div>
-                        </li>
-                        <li>
-                            <div style="font-weight: 700; margin-bottom: 4px;">Juara 4</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Merchandise</div>
-                        </li>
-                        
+                            <div class="prize-amount">Rp300.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Uang pembinaan</div>
+                        </li> 
                     </ul>
                 </div>
 
@@ -1230,23 +1238,18 @@
                     <ul class="prize-list">
                         <li>
                             <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;">🥇 Juara 1</div>
-                            <div class="prize-amount">Rp750.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Merchandise</div>
+                            <div class="prize-amount">Rp600.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
                             <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;">🥈 Juara 2</div>
-                            <div class="prize-amount">Rp500.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Merchandise</div>
+                            <div class="prize-amount">Rp450.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
                             <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;">🥉 Juara 3</div>
-                            <div class="prize-amount">Rp350.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Merchandise</div>
-                        </li>
-    
-                        <li>
-                            <div style="font-weight: 700; margin-bottom: 4px;">Juara 5</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Merchandise</div>
+                            <div class="prize-amount">Rp30.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Uang pembinaan</div>
                         </li>
                     </ul>
                 </div>
@@ -1255,10 +1258,8 @@
             <div class="glass-card" style="margin-top: 2rem;">
                 <h3>Catatan Hadiah</h3>
                 <ul style="margin-bottom: 0;">
-                    <li>Hadiah uang pembinaan akan ditransfer ke rekening pemenang dalam waktu <strong>maksimal 14 hari kerja</strong> setelah pengumuman resmi.</li>
-                    <li>Medali, sertifikat, dan merchandise dapat diambil pada saat acara atau dikirimkan via kurir dengan biaya ditanggung pemenang (jika berhalangan hadir).</li>
-                    <li>Pemenang wajib mengisi formulir data perbankan dan alamat pengiriman yang akan diberikan oleh panitia.</li>
-                    <li>Pajak hadiah (jika ada) ditanggung oleh pemenang sesuai ketentuan peraturan perpajakan yang berlaku.</li>
+                    <li>Hadiah uang pembinaan akan diberikan saat acara atau ditransfer ke rekening pemenang dalam waktu <strong>maksimal 7 hari kerja</strong> setelah pengumuman resmi.</li>
+                    <li>Medali, sertifikat, dapat diambil pada saat acara </li>
                 </ul>
             </div>
         </div>
@@ -1313,17 +1314,20 @@
                 <div class="contact-grid" style="margin-top: 1.5rem;">
                     <div class="contact-item">
                         <div class="contact-label">Contact Person 1</div>
-                        <div class="contact-value contact-placeholder">(Belum ditentukan)</div>
+                        <div class="contact-value contact-placeholder">082118759514 an Khoirunnisa</div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-label">Contact Person 2</div>
-                        <div class="contact-value contact-placeholder">(Belum ditentukan)</div>
+                        <div class="contact-value contact-placeholder">081368234492 an Karina Amelia P</div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-label">Instagram Resmi</div>
-                        <div class="contact-value contact-placeholder">(Belum ditentukan)</div>
+                        <div class="contact-value contact-placeholder">@himpi.univbi</div>
                     </div>
-                   
+                    <div class="contact-item">
+                        <div class="contact-label">Instagram Resmi</div>
+                        <div class="contact-value contact-placeholder">@digitalcreative.himpi</div>
+                    </div>
                 </div>
 
                 <div style="margin-top: 1.5rem; padding: 16px; background: rgba(255,94,0,0.05); border-radius: 10px; border: 1px dashed var(--border-glass);">

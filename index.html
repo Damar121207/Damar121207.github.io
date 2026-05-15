@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guidebook Resmi — Lomba UI/UX Design & Workshop 2026</title>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
         :root {
             --black: #070707;
             --dark-grey: #121212;
@@ -17,6 +21,20 @@
             --grey-text: #a0a0a0;
             --border-glass: rgba(255, 94, 0, 0.15);
             --border-gold: rgba(255, 215, 0, 0.25);
+        }
+            /* Styling dasar menu link */
+        /* Gaya dasar link menu untuk Desktop */
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.88rem;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        
+        .nav-menu a:hover {
+            opacity: 1;
+            color: var(--orange-light);
         }
 
         * {
@@ -608,13 +626,13 @@
             pointer-events: none;
         }
 
-     .float-tag {
-    height: 130px; /* Sesuaikan ukuran logo yang Anda inginkan */
-    width: 130px;  /* Sesuaikan ukuran logo yang Anda inginkan */
-    position: absolute;
-    z-index: 99; /* Pastikan di atas elemen lain */
-    pointer-events: none;
-}
+        .float-tag {
+            height: 130px; /* Sesuaikan ukuran logo yang Anda inginkan */
+            width: 130px;  /* Sesuaikan ukuran logo yang Anda inginkan */
+            position: absolute;
+            z-index: 99; /* Pastikan di atas elemen lain */
+            pointer-events: none;
+        }
 
         /* ========== PRINT BUTTON ========== */
         .no-print {
@@ -661,13 +679,78 @@
             z-index: 99; /* Pastikan di atas elemen lain */
             pointer-events: none;
             }
-
+            .hamburger-btn {
+            display: flex !important; /* Tampilkan tombol 3 garis di HP */
         }
+
+        .nav-menu {
+            display: none !important; /* Sembunyikan menu deret di HP */
+            flex-direction: column;
+            width: 100%;
+            background: rgba(11, 15, 25, 0.95); /* Background dropdown saat dibuka */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            border-bottom: 1px solid var(--border-glass);
+            gap: 20px !important;
+        }
+
+        /* Aktifkan menu dropdown saat tombol hamburger diklik */
+        .nav-menu.active {
+            display: flex !important;
+        }
+    }
+        
 
     </style>
 </head>
 <body>
+    <!-- NAVBAR SECTION -->
+<!-- NAVBAR SECTION (Sudah Diperbaiki & Responsive) -->
+<!-- 2. STRUKTUR HTML NAVBAR -->
+<!-- UPDATE PADA TAG NAV -->
+<nav class="smart-nav" style="
+    position: fixed; /* Diubah ke fixed agar bisa dikontrol posisinya */
+    top: 0;          /* Posisi awal di paling atas */
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 9999;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 14px 24px; 
+    background: rgba(11, 15, 25, 0.75); 
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
+    transition: top 0.3s ease-in-out; /* Animasi halus saat muncul/sembunyi */
+">
+    <!-- Konten di dalam nav tetap sama seperti kode sebelumnya -->
+    <div style="font-weight: bold; font-size: 1.25rem; color: #fff; letter-spacing: 0.5px;">
+        Event<span style="color: var(--orange-light);">Comp</span>
+    </div>
 
+    <button class="hamburger-btn" onclick="toggleMenu()" style="display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px;">
+        <span style="display: block; width: 25px; height: 3px; background: #fff; border-radius: 2px;"></span>
+        <span style="display: block; width: 25px; height: 3px; background: #fff; border-radius: 2px;"></span>
+        <span style="display: block; width: 25px; height: 3px; background: #fff; border-radius: 2px;"></span>
+    </button>
+
+    <div class="nav-menu" style="display: flex; gap: 12px 18px; align-items: center; flex-wrap: wrap;">
+        <a href="#cover" onclick="closeMenu()">Home</a>
+        <a href="#kegiatan" onclick="closeMenu()">Tentang</a>
+        <a href="#timeline" onclick="closeMenu()">Mekanisme</a>
+        <a href="#workshop" onclick="closeMenu()">Acara</a>
+        <a href="#benefit" onclick="closeMenu()">Benefit</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+        <a href="#daftar" onclick="closeMenu()" style="background: var(--orange-light); color: white !important; padding: 6px 14px; border-radius: 6px; font-weight: 600; margin-left: 4px; opacity: 1 !important;">Daftar</a>
+    </div>
+</nav>
     <!-- PRINT BUTTON -->
     <div class="no-print">
         <button class="btn-print" onclick="window.print()">Cetak / Simpan PDF</button>
@@ -676,7 +759,7 @@
     <!-- ========================================== -->
     <!-- PAGE 1: COVER                              -->
     <!-- ========================================== -->
-    <div class="page cover">
+    <div id="cover" class="page cover">
         <div class="geo-orb geo-orb-orange"></div>
         <div class="geo-orb geo-orb-gold"></div>
         <div class="grid-bg"></div>
@@ -741,7 +824,7 @@
     <!-- ========================================== -->
     <!-- PAGE 2: KATA PENGANTAR & TENTANG           -->
     <!-- ========================================== -->
-    <div class="page">
+    <div id="kata-pengantar"  class="page">
         <div class="grid-bg"></div>
         <div class="geo-orb" style="width: 200px; height: 200px; background: var(--orange); top: -50px; right: -50px; opacity: 0.2;"></div>
         
@@ -763,10 +846,10 @@
             </div>
 
             <div class="divider"></div>
-
+            <div id="kegiatan">
             <h2><span class="section-num">02</span>Tentang Kegiatan</h2>
             
-            <div class="glass-card">
+            <div  class="glass-card">
                 <p><strong>Lomba UI/UX Design & Workshop 2026</strong> adalah kegiatan kompetisi desain antarmuka dan pengalaman pengguna yang diselenggarakan oleh Himpunan Mahasiswa Prodi Informatika Universitas Bina Insan. Kegiatan ini menggabungkan kompetisi kreatif dengan sesi edukasi berupa workshop intensif, menciptakan ekosistem belajar yang komprehensif bagi para peserta.</p>
                 
                 <h3>Visi Kegiatan</h3>
@@ -782,12 +865,13 @@
                 </ul>
             </div>
         </div>
+        </div>
     </div>
 
     <!-- ========================================== -->
     <!-- PAGE 3: TUJUAN & MANFAAT                   -->
     <!-- ========================================== -->
-    <div class="page">
+    <div id="tujuan" class="page">
         <div class="grid-bg"></div>
         <div class="geo-orb" style="width: 250px; height: 250px; background: var(--gold); bottom: -80px; left: -60px; opacity: 0.15;"></div>
         
@@ -808,9 +892,9 @@
 
             <div class="divider"></div>
 
-            <h2><span class="section-num">04</span>Manfaat Kegiatan</h2>
+            <h2><span id="manfaat" class="section-num">04</span>Manfaat Kegiatan</h2>
             
-            <div class="glass-card glass-card-gold">
+            <div  class="glass-card glass-card-gold">
                 <p>Dengan berpartisipasi dalam <strong>Lomba UI/UX Design & Workshop 2026</strong>, para peserta akan memperoleh berbagai manfaat berharga, antara lain:</p>
                 <ul>
                     <li><strong>Pengalaman Lomba:</strong> Exposure langsung dalam kompetisi desain berskala kampus yang mengasah mentalitas dan manajemen waktu.</li>
@@ -832,10 +916,10 @@
         <div class="grid-bg"></div>
         
         <div class="container">
-            <h2><span class="section-num">05</span>Timeline Kegiatan</h2>
+            <h2><span id="timeline" class="section-num">05</span>Timeline Kegiatan</h2>
             <p style="text-align: center; margin-bottom: 2rem;">Seluruh rangkaian kegiatan berjalan sesuai jadwal resmi berikut:</p>
             
-            <div class="timeline">
+            <div  class="timeline">
                 <div class="timeline-item active">
                     <div class="timeline-dot">1</div>
                     <div class="timeline-date">18–25 Mei 2026</div>
@@ -882,24 +966,26 @@
 
             <h2><span class="section-num">06</span>Kategori Peserta</h2>
             
-            <div class="glass-card">
+            <div id="kategori" class="glass-card">
                 <p>Kompetisi ini terbuka untuk dua kategori utama dengan ketentuan sebagai berikut:</p>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 1rem;">
+                <!-- Perubahan pada grid-template-columns agar responsive -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 1rem;">
+                    <!-- Kategori Pelajar -->
                     <div style="padding: 20px; background: rgba(255,94,0,0.05); border-radius: 12px; border: 1px solid var(--border-glass);">
                         <h3 style="margin-top: 0; color: var(--orange-light);">Kategori Pelajar</h3>
-                        <ul style="margin-bottom: 0;">
+                        <ul style="margin-bottom: 0; padding-left: 20px;">
                             <li>SMA / SMK / MA sederajat</li>
-                            <li>Bersifat <strong>Kelompok</strong>(maximal 3 orang)</li>
+                            <li>Bersifat <strong>Kelompok</strong> (maksimal 3 orang)</li>
                         </ul>
                     </div>
+                    <!-- Kategori Umum -->
                     <div style="padding: 20px; background: rgba(255,215,0,0.05); border-radius: 12px; border: 1px solid var(--border-gold);">
                         <h3 style="margin-top: 0; color: var(--gold);">Kategori Umum</h3>
-                        <ul style="margin-bottom: 0;">
+                        <ul style="margin-bottom: 0; padding-left: 20px;">
                             <li>Mahasiswa aktif (semua jurusan & universitas)</li>
                             <li>Umum (pekerja, freelancer, dll.)</li>
                             <li>Batas usia maksimal <strong>25 tahun</strong> per 6 Juni 2026</li>
-                            <li>Bersifat <strong>Kelompok</strong> (maximal 3 orang)</li>
+                            <li>Bersifat <strong>Kelompok</strong> (maksimal 3 orang)</li>
                         </ul>
                     </div>
                 </div>
@@ -910,12 +996,12 @@
     <!-- ========================================== -->
     <!-- PAGE 5: SYARAT & KETENTUAN LOMBA           -->
     <!-- ========================================== -->
-    <div class="page">
+    <div  class="page">
         <div class="grid-bg"></div>
         <div class="geo-orb" style="width: 300px; height: 300px; background: var(--orange); top: 50%; left: -100px; opacity: 0.1; filter: blur(80px);"></div>
         
         <div class="container">
-            <h2><span class="section-num">07</span>Syarat Peserta</h2>
+            <h2><span id="syarat" class="section-num">07</span>Syarat Peserta</h2>
             
             <div class="glass-card">
                 <p>Untuk menjamin kelancaran dan integritas kompetisi, seluruh peserta wajib memenuhi syarat-syarat berikut:</p>
@@ -938,7 +1024,7 @@
 
             <div class="divider"></div>
 
-            <h2><span class="section-num">08</span>Ketentuan Lomba</h2>
+            <h2><span id="ketentuan-lomba" class="section-num">08</span>Ketentuan Lomba</h2>
             
             <div class="glass-card">
                 <h3>A. Ketentuan Teknis Desain</h3>
@@ -983,7 +1069,7 @@
     <div class="page">
         <div class="grid-bg"></div>
         
-        <div class="container">
+        <div id="ketentuan-AI" class="container">
             <h2><span class="section-num">09</span>Ketentuan AI dan Orisinalitas</h2>
             
             <div class="glass-card glass-card-gold">
@@ -996,7 +1082,7 @@
                 </ul>
             </div>
 
-            <div class="divider"></div>
+            <div id="aset" class="divider"></div>
 
             <h2><span class="section-num">10</span>Aset yang Disediakan Panitia</h2>
             
@@ -1015,9 +1101,9 @@
 
             <div class="divider"></div>
 
-            <h2><span class="section-num">11</span>Format Karya</h2>
+            <h2><span id="format" class="section-num">11</span>Format Karya</h2>
             
-            <div class="glass-card">
+            <div  class="glass-card">
                 <p>Seluruh peserta wajib mengumpulkan paket karya lengkap yang terdiri dari:</p>
                 <ul>
                     <li><strong>File Desain Final:</strong> Hasil export desain dalam format siap publikasi (PNG, JPG, atau PDF).</li>
@@ -1056,7 +1142,7 @@
         <div class="grid-bg"></div>
         <div class="geo-orb" style="width: 400px; height: 400px; background: var(--gold); top: 50%; right: -150px; opacity: 0.08; filter: blur(100px);"></div>
         
-        <div class="container">
+        <div id="sistem-penilaian" class="container">
             <h2><span class="section-num">12</span>Sistem Penilaian</h2>
             <p style="margin-bottom: 1.5rem;">Penilaian dilakukan oleh panel juri profesional dengan komposisi bobot dan kriteria sebagai berikut:</p>
             
@@ -1125,7 +1211,7 @@
     <div class="page">
         <div class="grid-bg"></div>
         
-        <div class="container">
+        <div id="workshop" class="container">
             <h2><span class="section-num">13</span>Workshop</h2>
             
             <div class="glass-card">
@@ -1203,7 +1289,7 @@
     <!-- ========================================== -->
     <!-- PAGE 9: PEMENANG & HADIAH                  -->
     <!-- ========================================== -->
-    <div class="page">
+    <div id="pemenang" class="page">
         <div class="grid-bg"></div>
         <div class="geo-orb" style="width: 350px; height: 350px; background: var(--orange); bottom: -120px; left: 50%; transform: translateX(-50%); opacity: 0.12; filter: blur(90px);"></div>
         
@@ -1271,7 +1357,7 @@
     <div class="page">
         <div class="grid-bg"></div>
         
-        <div class="container">
+        <div id="benefit" class="container">
             <h2><span class="section-num">15</span>Benefit Peserta</h2>
             
             <div class="glass-card">
@@ -1306,7 +1392,7 @@
 
             <div class="divider"></div>
 
-            <h2><span class="section-num">16</span>Contact Person</h2>
+            <h2><span id="contact" class="section-num">16</span>Contact Person</h2>
             
             <div class="glass-card">
                 <p>Untuk informasi lebih lanjut, klarifikasi teknis, atau bantuan administrasi, silakan hubungi contact person resmi panitia:</p>
@@ -1347,9 +1433,9 @@
 
             <div class="divider"></div>
 
-            <h2><span class="section-num">17</span>Penutup</h2>
+            <h2><span id="penutup" class="section-num">17</span>Penutup</h2>
             
-            <div class="glass-card glass-card-gold">
+            <div  class="glass-card glass-card-gold">
                 <p>Demikianlah <strong>Guidebook Resmi Lomba UI/UX Design & Workshop 2026</strong> yang disusun sebagai pedoman utama dan acuan tunggal bagi seluruh peserta dan panitia selama rangkaian kegiatan berlangsung. Dokumen ini mencakup seluruh aspek teknis, administrasi, kreatif, dan legal yang mengatur jalannya kompetisi.</p>
                 
                 <p>Panitia menyadari bahwa dinamika teknologi dan kreativitas selalu berkembang; oleh karena itu, segala bentuk update, addendum, atau koreksi terhadap isi guidebook ini akan diumumkan melalui kanal resmi yang telah ditetapkan dan dianggap sah sejak tanggal publikasinya.</p>
@@ -1377,4 +1463,40 @@
     </div>
 
 </body>
+<script>
+    // 1. Deklarasi Variabel (Hanya boleh sekali)
+    const navMenu = document.querySelector('.nav-menu');
+    const navbar = document.querySelector('.smart-nav');
+    let lastScrollTop = 0;
+
+    // 2. Fungsi Utama Navigasi Hamburger (Hanya boleh sekali)
+    function toggleMenu() {
+        navMenu.classList.toggle('active');
+    }
+
+    function closeMenu() {
+        navMenu.classList.remove('active');
+    }
+
+    // 3. Logika Efek Scroll (Sembunyi/Muncul Navbar)
+    window.addEventListener('scroll', function() {
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // Jika menu hamburger sedang terbuka di HP, jangan sembunyikan navbar
+        if (navMenu.classList.contains('active')) {
+            return;
+        }
+
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scroll Ke Bawah -> Sembunyikan Navbar
+            navbar.style.top = "-100px";
+        } else {
+            // Scroll Ke Atas -> Munculkan Navbar
+            navbar.style.top = "0";
+        }
+        
+        // Simpan posisi scroll terakhir (antisipasi nilai negatif di iOS)
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+    });
+</script>
 </html>

@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidebook Resmi — Lomba UI/UX Design & Workshop 2026</title>
+    <style>
+        :root {
+            --black: #070707;
+            --dark-grey: #121212;
+            --card: rgba(18, 18, 18, 0.75);
+            --orange: #ff5e00;
+            --orange-light: #ff8c42;
+            --gold: #ffd700;
+            --gold-orange: #ffb347;
+            --white: #f5f5f5;
+            --grey-text: #a0a0a0;
+            --border-glass: rgba(255, 94, 0, 0.15);
+            --border-gold: rgba(255, 215, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* ========== PRINT & PAGE SETUP ========== */
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto 20px auto;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+            page-break-after: always;
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 0 40px rgba(255, 94, 0, 0.08);
+        }
+
+        @media print {
+            body { background: white; }
+            .page { 
+                margin: 0; 
+                box-shadow: none; 
+                border: none;
+                page-break-after: always;
+            }
+            .no-print { display: none !important; }
+        }
+
+        /* ========== TYPOGRAPHY ========== */
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--orange-light);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-left: 4px solid var(--orange);
+            padding-left: 12px;
+        }
+
+        h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin: 1.2rem 0 0.6rem 0;
+        }
+
+        p {
+            margin-bottom: 0.9rem;
+            text-align: justify;
+            color: var(--grey-text);
+        }
+
+        ul, ol {
+            margin-left: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--grey-text);
+        }
+
+        li {
+            margin-bottom: 0.4rem;
+        }
+
+        strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* ========== UTILITIES ========== */
+        .container {
+            padding: 50px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .text-center { text-align: center; }
+        .text-orange { color: var(--orange-light); }
+        .text-gold { color: var(--gold); }
+        .text-white { color: var(--white); }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--orange), var(--gold), transparent);
+            margin: 2rem 0;
+            border: none;
+            opacity: 0.6;
+        }
+
+        .divider-short {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--gold));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* ========== GLASSMORPHISM CARD ========== */
+        .glass-card {
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,94,0,0.08) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .glass-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-card-gold {
+            border: 1px solid var(--border-gold);
+        }
+
+        .glass-card-gold::before {
+            background: radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
+        }
+
+        /* ========== GEOMETRIC DECORATIONS ========== */
+        .geo-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.35;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .geo-orb-orange {
+            width: 300px;
+            height: 300px;
+            background: var(--orange);
+            top: -100px;
+            right: -80px;
+        }
+
+        .geo-orb-gold {
+            width: 250px;
+            height: 250px;
+            background: var(--gold);
+            bottom: -80px;
+            left: -60px;
+            opacity: 0.2;
+        }
+
+        .geo-line {
+            position: absolute;
+            background: linear-gradient(180deg, transparent, var(--orange), transparent);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .grid-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(255,94,0,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,94,0,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ========== COVER PAGE ========== */
+        .cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 297mm;
+            text-align: center;
+            position: relative;
+            padding: 60px;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 1px solid var(--orange);
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange-light);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            background: rgba(255,94,0,0.08);
+        }
+
+        .cover h1 {
+            font-size: 3.2rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.05;
+        }
+
+        .cover-subtitle {
+            font-size: 1.3rem;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            letter-spacing: 0.02em;
+        }
+
+        .cover-theme {
+            font-size: 1rem;
+            color: var(--grey-text);
+            max-width: 500px;
+            margin: 0 auto 2.5rem auto;
+            font-style: italic;
+            border-top: 1px solid var(--border-gold);
+            border-bottom: 1px solid var(--border-gold);
+            padding: 12px 0;
+        }
+
+        .cover-org {
+            font-size: 0.95rem;
+            color: var(--grey-text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 3rem;
+        }
+
+        .cover-org strong {
+            color: var(--white);
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 4px;
+        }
+
+        /* Mockup Visualization */
+        .mockup-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            align-items: flex-end;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .laptop-mockup {
+            width: 320px;
+            height: 200px;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 12px 12px 0 0;
+            background: linear-gradient(135deg, rgba(255,94,0,0.1), rgba(255,215,0,0.05));
+            position: relative;
+            padding: 12px;
+            box-shadow: 0 0 30px rgba(255,94,0,0.1);
+        }
+
+        .laptop-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laptop-screen::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            background: 
+                linear-gradient(90deg, rgba(255,94,0,0.2) 0%, transparent 20%),
+                linear-gradient(180deg, rgba(255,215,0,0.1) 0%, transparent 20%);
+            border: 1px dashed rgba(255,255,255,0.1);
+        }
+
+        .laptop-base {
+            width: 360px;
+            height: 12px;
+            background: linear-gradient(90deg, #2d2d2d, #1a1a1a, #2d2d2d);
+            border-radius: 0 0 8px 8px;
+            margin: 0 auto;
+            border-bottom: 2px solid var(--orange);
+        }
+
+        .phone-mockup {
+            width: 100px;
+            height: 180px;
+            border: 2px solid rgba(255,255,255,0.15);
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(255,94,0,0.15), rgba(255,215,0,0.05));
+            padding: 8px;
+            box-shadow: 0 0 20px rgba(255,94,0,0.15);
+            position: relative;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-screen::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            height: 40px;
+            background: linear-gradient(90deg, var(--orange), var(--gold));
+            opacity: 0.3;
+            border-radius: 4px;
+        }
+
+        .dashboard-ui {
+            position: absolute;
+            top: 60px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+        }
+
+        .dash-item {
+            background: rgba(255,255,255,0.05);
+            border-radius: 3px;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .cover-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.3);
+            letter-spacing: 0.1em;
+        }
+
+        /* ========== TABLES ========== */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background: linear-gradient(135deg, rgba(255,94,0,0.2), rgba(255,215,0,0.1));
+            color: var(--white);
+            font-weight: 600;
+            text-align: left;
+            padding: 14px 16px;
+            border-bottom: 2px solid var(--orange);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.03em;
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: var(--grey-text);
+            vertical-align: top;
+        }
+
+        tr:hover td {
+            background: rgba(255,94,0,0.03);
+            color: var(--white);
+        }
+
+        /* ========== TIMELINE ========== */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 2.5rem 0;
+            padding: 0 10px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--orange), var(--gold));
+            opacity: 0.4;
+        }
+
+        .timeline-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-dot {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--dark-grey);
+            border: 2px solid var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--orange-light);
+            margin-bottom: 12px;
+            box-shadow: 0 0 15px rgba(255,94,0,0.2);
+        }
+
+        .timeline-item.active .timeline-dot {
+            background: linear-gradient(135deg, var(--orange), var(--gold));
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        .timeline-date {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 4px;
+            letter-spacing: 0.02em;
+        }
+
+        .timeline-label {
+            font-size: 0.8rem;
+            color: var(--grey-text);
+            max-width: 110px;
+            line-height: 1.3;
+        }
+
+        /* ========== PRIZE CARDS ========== */
+        .prize-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 1.5rem;
+        }
+
+        .prize-category h3 {
+            text-align: center;
+            color: var(--orange-light);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-glass);
+        }
+
+        .prize-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .prize-list li {
+            background: rgba(255,255,255,0.03);
+            border-left: 3px solid var(--gold);
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .prize-amount {
+            color: var(--gold);
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        /* ========== CONTACT ========== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            padding: 16px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            border: 1px solid var(--border-glass);
+        }
+
+        .contact-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--orange-light);
+            margin-bottom: 6px;
+        }
+
+        .contact-value {
+            font-size: 0.95rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        .contact-placeholder {
+            color: var(--grey-text);
+            font-style: italic;
+        }
+
+        /* ========== SECTION NUMBERING ========== */
+        .section-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--orange), var(--gold-orange));
+            color: var(--black);
+            font-weight: 800;
+            font-size: 1rem;
+            border-radius: 8px;
+            margin-right: 12px;
+            vertical-align: middle;
+        }
+
+        /* ========== FLOATING UI ELEMENTS ========== */
+        .float-ui {
+            position: absolute;
+            border: 1px solid rgba(255,94,0,0.2);
+            background: rgba(18,18,18,0.6);
+            backdrop-filter: blur(4px);
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.7rem;
+            color: var(--grey-text);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .float-tag {
+            position: absolute;
+            background: linear-gradient(135deg, var(--orange), var(--gold-orange));
+            color: var(--black);
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* ========== PRINT BUTTON ========== */
+        .no-print {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .btn-print {
+            background: linear-gradient(135deg, var(--orange), var(--gold-orange));
+            color: var(--black);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(255,94,0,0.3);
+            transition: transform 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255,94,0,0.4);
+        }
+
+        /* ========== RESPONSIVE ========== */
+        @media (max-width: 768px) {
+            .page { width: 100%; min-height: auto; }
+            .container { padding: 30px 24px; }
+            .cover h1 { font-size: 2rem; }
+            .prize-grid, .contact-grid { grid-template-columns: 1fr; }
+            .timeline { flex-direction: column; gap: 20px; }
+            .timeline::before { display: none; }
+            .mockup-container { transform: scale(0.8); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRINT BUTTON -->
+    <div class="no-print">
+        <button class="btn-print" onclick="window.print()">Cetak / Simpan PDF</button>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 1: COVER                              -->
+    <!-- ========================================== -->
+    <div class="page cover">
+        <div class="geo-orb geo-orb-orange"></div>
+        <div class="geo-orb geo-orb-gold"></div>
+        <div class="grid-bg"></div>
+        
+        <div class="float-ui" style="top: 80px; left: 60px;">&lt;interface&gt; design.system</div>
+        <div class="float-ui" style="top: 140px; right: 80px;">user.experience // 2026</div>
+        <div class="float-tag" style="bottom: 180px; left: 70px;">Official Guidebook</div>
+        <div class="float-tag" style="top: 200px; right: 60px;">v1.0</div>
+
+        <div style="position: relative; z-index: 2;">
+            <div class="cover-badge">Guidebook Resmi 2026</div>
+            
+            <!-- Logo placeholders -->
+            <div style="margin-bottom: 2rem; opacity: 0.8;">
+                <div style="font-size: 0.8rem; color: var(--grey-text); text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 8px;">Diselenggarakan oleh</div>
+                <div style="font-size: 1.1rem; font-weight: 700; color: var(--white);">HIMPUNAN MAHASISWA PRODI INFORMATIKA</div>
+                <div style="font-size: 0.9rem; color: var(--gold); margin-top: 4px;">UNIVERSITAS BINA INSAN</div>
+            </div>
+
+            <h1>Lomba UI/UX<br>Design & Workshop<br>2026</h1>
+            
+            <div class="divider-short"></div>
+            
+            <div class="cover-subtitle">"UI/UX sebagai Wajah Kampus Digital Modern"</div>
+            
+            <div class="cover-theme">
+                Creative Digital Branding · Smart Campus Experience · Future Education Interface · Modern Educational Technology · Digital Creative Innovation
+            </div>
+
+            <!-- Device Mockups -->
+            <div class="mockup-container">
+                <div>
+                    <div class="laptop-mockup">
+                        <div class="laptop-screen"></div>
+                    </div>
+                    <div class="laptop-base"></div>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="dashboard-ui">
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+                            <div class="dash-item"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cover-org">
+                Kompetisi Teknologi & Edukasi Kreatif Digital<br>
+                <strong>Tingkat Pelajar & Umum</strong>
+            </div>
+        </div>
+
+        <div class="cover-footer">
+            GUIDEBOOK RESMI · HIMPUNAN MAHASISWA PRODI INFORMATIKA · UNIVERSITAS BINA INSAN · 2026
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 2: KATA PENGANTAR & TENTANG           -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        <div class="geo-orb" style="width: 200px; height: 200px; background: var(--orange); top: -50px; right: -50px; opacity: 0.2;"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">01</span>Kata Pengantar</h2>
+            
+            <div class="glass-card">
+                <p>Assalamu'alaikum Warahmatullahi Wabarakatuh.</p>
+                <p>Dengan memanjatkan puji syukur ke hadirat Allah Subhanahu wa Ta'ala, kami sampaikan rasa syukur atas terlaksananya penyusunan <strong>Guidebook Resmi Lomba UI/UX Design & Workshop 2026</strong> ini. Dokumen ini menjadi landsan utama dan pedoman resmi bagi seluruh peserta dan panitia dalam menjalankan rangkaian kegiatan kompetisi teknologi yang diselenggarakan oleh <strong>Himpunan Mahasiswa Prodi Informatika Universitas Bina Insan</strong>.</p>
+                <p>Di era digital yang berkembang pesat, <em>User Interface (UI)</em> dan <em>User Experience (UX)</em> bukan lagi sekadar aspek teknis belaka, melainkan menjadi wajah dan jiwa dari setiap produk digital. Kegiatan ini hadir sebagai wadah pengembangan kreativitas, inovasi, dan kolaborasi bagi para generasi muda—khususnya pelajar dan mahasiswa—untuk mengasah kemampuan desain yang relevan dengan kebutuhan industri teknologi masa kini.</p>
+                <p>Melalui guidebook ini, kami harapkan seluruh peserta memperoleh pemahaman komprehensif mengenai alur kompetisi, ketentuan teknis, kriteria penilaian, serta rangkaian workshop yang telah kami persiapkan dengan matang. Semoga kegiatan ini dapat menjadi momentum berharga dalam membangun ekosistem kreatif digital di lingkungan kampus dan lebih luas lagi.</p>
+                <p>Selamat berkompetisi, berkarya, dan berinovasi!</p>
+                <p style="text-align: right; margin-top: 2rem; color: var(--white);">
+                    <strong>Panitia Pelaksana</strong><br>
+                    Lomba UI/UX Design & Workshop 2026<br>
+                    Himpunan Mahasiswa Prodi Informatika<br>
+                    Universitas Bina Insan
+                </p>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">02</span>Tentang Kegiatan</h2>
+            
+            <div class="glass-card">
+                <p><strong>Lomba UI/UX Design & Workshop 2026</strong> adalah kegiatan kompetisi desain antarmuka dan pengalaman pengguna yang diselenggarakan oleh Himpunan Mahasiswa Prodi Informatika Universitas Bina Insan. Kegiatan ini menggabungkan kompetisi kreatif dengan sesi edukasi berupa workshop intensif, menciptakan ekosistem belajar yang komprehensif bagi para peserta.</p>
+                
+                <h3>Visi Kegiatan</h3>
+                <p>Menjadikan UI/UX sebagai medium utama dalam memperkenalkan dan memperkuat branding kampus digital modern, sekaligus mengakselerasi kemampuan generasi muda dalam menciptakan solusi desain yang berdampak positif.</p>
+                
+                <h3>Misi Kegiatan</h3>
+                <ul>
+                    <li>Memberikan wadah kompetitif dan edukatif bagi pelajar serta mahasiswa dalam mengembangkan skill UI/UX design.</li>
+                    <li>Meningkatkan kesadaran akan pentingnya tampilan antarmuka dan pengalaman pengguna dalam ekosistem digital kampus.</li>
+                    <li>Mendorong terciptanya inovasi digital yang berbasis pada kebutuhan nyata pengguna.</li>
+                    <li>Membangun portofolio berkualitas yang relevan dengan tren industri teknologi terkini.</li>
+                    <li>Memperkuat identitas branding digital kampus melalui karya-karya peserta.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 3: TUJUAN & MANFAAT                   -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        <div class="geo-orb" style="width: 250px; height: 250px; background: var(--gold); bottom: -80px; left: -60px; opacity: 0.15;"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">03</span>Tujuan Kegiatan</h2>
+            
+            <div class="glass-card">
+                <p>Kegiatan ini dirancang dengan tujuan strategis yang berorientasi pada pengembangan kompetensi, kreativitas, dan persiapan karier di bidang teknologi:</p>
+                <ol>
+                    <li><strong>Meningkatkan Skill UI/UX:</strong> Peserta diharapkan mampu menguasai prinsip-prinsip fundamental desain antarmuka dan pengalaman pengguna melalui praktik langsung dalam kompetisi.</li>
+                    <li><strong>Meningkatkan Kreativitas Digital:</strong> Mendorong eksplorasi ide-ide segar dan solusi desain yang out-of-the-box dalam konteks branding kampus modern.</li>
+                    <li><strong>Membangun Portofolio Profesional:</strong> Menghasilkan karya desain berkualitas yang dapat dijadikan aset portofolio untuk kebutuhan akademik dan persiapan masuk dunia industri.</li>
+                    <li><strong>Memahami Branding Digital:</strong> Memberikan pemahaman mendalam mengenai bagaimana desain UI/UX berperan dalam membentuk persepsi dan identitas sebuah institusi di ranah digital.</li>
+                    <li><strong>Memahami Pengalaman Pengguna:</strong> Mengasah kemampuan empati dan analisis kebutuhan pengguna (user research) sebagai fondasi utama dalam proses perancangan produk digital.</li>
+                    <li><strong>Mengembangkan Inovasi Digital:</strong> Merangsang terciptanya konsep-konsep inovatif yang mengintegrasikan teknologi modern dengan kebutuhan edukasi kontemporer.</li>
+                </ol>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">04</span>Manfaat Kegiatan</h2>
+            
+            <div class="glass-card glass-card-gold">
+                <p>Dengan berpartisipasi dalam <strong>Lomba UI/UX Design & Workshop 2026</strong>, para peserta akan memperoleh berbagai manfaat berharga, antara lain:</p>
+                <ul>
+                    <li><strong>Pengalaman Lomba:</strong> Exposure langsung dalam kompetisi desain berskala kampus yang mengasah mentalitas dan manajemen waktu.</li>
+                    <li><strong>Wawasan UI/UX:</strong> Akses ke materi dan evaluasi dari para praktisi serta dosen yang kompeten di bidangnya.</li>
+                    <li><strong>Relasi & Networking:</strong> Kesempatan membangun jaringan dengan sesama peserta, alumni, dan profesional di bidang teknologi kreatif.</li>
+                    <li><strong>E-Sertifikat:</strong> Sertifikat elektronik resmi dari panitia sebagai bukti partisipasi yang dapat melengkapi dokumen prestasi akademik.</li>
+                    <li><strong>Workshop Eksklusif:</strong> Akses penuh ke sesi workshop intensif yang membahas dasar hingga tren UI/UX terkini.</li>
+                    <li><strong>Portofolio:</strong> Karya final yang dihasilkan dapat langsung diintegrasikan ke dalam portofolio profesional masing-masing peserta.</li>
+                    <li><strong>Pengalaman Kompetisi:</strong> Bekal berharga dalam menghadapi kompetisi tingkat yang lebih tinggi, baik regional maupun nasional.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 4: TIMELINE & KATEGORI                -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">05</span>Timeline Kegiatan</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Seluruh rangkaian kegiatan berjalan sesuai jadwal resmi berikut:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-date">11–25 Mei 2026</div>
+                    <div class="timeline-label">Pendaftaran & Administrasi</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-date">26–30 Mei 2026</div>
+                    <div class="timeline-label">Pengumpulan Karya Final</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-date">1–2 Juni 2026</div>
+                    <div class="timeline-label">Penilaian & Kurasi</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-date">4 Juni 2026</div>
+                    <div class="timeline-label">Pengumuman Finalis</div>
+                </div>
+                <div class="timeline-item active">
+                    <div class="timeline-dot">5</div>
+                    <div class="timeline-date">6 Juni 2026</div>
+                    <div class="timeline-label">Workshop & Pengumuman Pemenang</div>
+                </div>
+            </div>
+
+            <div class="glass-card" style="margin-top: 2rem;">
+                <h3>Catatan Penting Timeline</h3>
+                <ul>
+                    <li>Seluruh batas waktu mengacu pada Waktu Indonesia Barat (WIB / UTC+7).</li>
+                    <li>Pendaftaran yang masuk setelah tanggal <strong>25 Mei 2026 pukul 23:59 WIB</strong> tidak akan diproses.</li>
+                    <li>Pengumpulan karya diperpanjang secara otomatis tidak tersedia; pastikan mengunggah sebelum deadline.</li>
+                    <li>Pengumuman finalis akan dipublikasikan melalui Instagram resmi dan grup peserta.</li>
+                </ul>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">06</span>Kategori Peserta</h2>
+            
+            <div class="glass-card">
+                <p>Kompetisi ini terbuka untuk dua kategori utama dengan ketentuan sebagai berikut:</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 1rem;">
+                    <div style="padding: 20px; background: rgba(255,94,0,0.05); border-radius: 12px; border: 1px solid var(--border-glass);">
+                        <h3 style="margin-top: 0; color: var(--orange-light);">Kategori Pelajar</h3>
+                        <ul style="margin-bottom: 0;">
+                            <li>SMA / SMK / MA sederajat</li>
+                            <li>Bersifat <strong>Kelompok</strong>(maximal 3 orang)</li>
+                        </ul>
+                    </div>
+                    <div style="padding: 20px; background: rgba(255,215,0,0.05); border-radius: 12px; border: 1px solid var(--border-gold);">
+                        <h3 style="margin-top: 0; color: var(--gold);">Kategori Umum</h3>
+                        <ul style="margin-bottom: 0;">
+                            <li>Mahasiswa aktif (semua jurusan & universitas)</li>
+                            <li>Umum (pekerja, freelancer, dll.)</li>
+                            <li>Batas usia maksimal <strong>25 tahun</strong> per 6 Juni 2026</li>
+                            <li>Bersifat <strong>Kelompok</strong> (maximal 3 orang)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 5: SYARAT & KETENTUAN LOMBA           -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        <div class="geo-orb" style="width: 300px; height: 300px; background: var(--orange); top: 50%; left: -100px; opacity: 0.1; filter: blur(80px);"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">07</span>Syarat Peserta</h2>
+            
+            <div class="glass-card">
+                <p>Untuk menjamin kelancaran dan integritas kompetisi, seluruh peserta wajib memenuhi syarat-syarat berikut:</p>
+                <ol>
+                    <li><strong>Kepatuhan Aturan Panitia:</strong> Peserta wajib tunduk dan mematuhi seluruh ketentuan, jadwal, serta keputusan yang diambil oleh panitia pelaksana.</li>
+                    <li><strong>Keanggotaan Grup:</strong> Peserta wajib bergabung dalam grup komunikasi resmi peserta (WhatsApp/Telegram/Discord) yang akan dibagikan setelah verifikasi pendaftaran.</li>
+                    <li><strong>Identitas Valid:</strong> Seluruh data identitas yang diinput pada formulir pendaftaran harus asli, valid, dan dapat diverifikasi. Penyalahgunaan identitas akan mengakibatkan diskualifikasi.</li>
+                    <li><strong>Batasan Karya:</strong> Setiap peserta hanya diperbolehkan mengirimkan <strong>maksimal 1 (satu) karya</strong> selama periode kompetisi.</li>
+                    <li><strong>Orisinalitas Karya:</strong> Karya yang dikumpulkan wajib orisinal, hasil karya sendiri, dan belum pernah dilombakan atau dipublikasikan untuk kompetisi lain.</li>
+                    <li><strong>Ketaatan Timeline:</strong> Peserta wajib mengikuti seluruh rangkaian jadwal yang telah ditetapkan panitia.</li>
+                    <li><strong>Pemahaman Guidebook:</strong> Peserta wajib membaca, memahami, dan mengacu pada guidebook resmi ini sebagai pedoman utama selama kompetisi berlangsung.</li>
+                </ol>
+                
+                <div style="margin-top: 1.5rem; padding: 16px; background: rgba(255,94,0,0.08); border-radius: 10px; border-left: 4px solid var(--orange);">
+                    <strong style="color: var(--orange-light);">Biaya Pendaftaran:</strong><br>
+                    <span style="color: var(--grey-text);">Rp50.000 untuk semua kategori</span>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">08</span>Ketentuan Lomba</h2>
+            
+            <div class="glass-card">
+                <h3>A. Ketentuan Teknis Desain</h3>
+                <ul>
+                    <li>Peserta <strong>bebas menggunakan software</strong> desain apa pun sesuai preferensi dan kebutuhan, termasuk namun tidak terbatas pada:
+                        <ul style="margin-top: 8px;">
+                            <li>Figma</li>
+                            <li>Adobe XD</li>
+                            <li>Canva</li>
+                            <li>Adobe Photoshop</li>
+                            <li>Adobe Illustrator</li>
+                            <li>Sketch, InVision, Lunacy, dan tools lainnya</li>
+                        </ul>
+                    </li>
+                    <li>Penggunaan <strong>kecerdasan buatan (AI)</strong> diperbolehkan sebagai alat bantu dalam proses kreatif.</li>
+                </ul>
+
+                <h3>B. Ketentuan Orisinalitas & Etika</h3>
+                <ul>
+                    <li>Hasil akhir wajib merupakan <strong>karya orisinal</strong> peserta sendiri.</li>
+                    <li><strong>Joki, plagiasi, dan penjiplakan</strong> dalam bentuk apa pun dilarang keras.</li>
+                    <li>Karya harus sesuai dengan tema utama dan subtema yang telah ditetapkan.</li>
+                    <li>Karya <strong>tidak boleh</strong> mengandung unsur:
+                        <ul style="margin-top: 6px;">
+                            <li>SARA (Suku, Agama, Ras, Antar-golongan)</li>
+                            <li>Pornografi dan konten vulgar</li>
+                            <li>Politik praktis dan provokasi</li>
+                            <li>Kekerasan, diskriminasi, dan bullying</li>
+                            <li>Unsur negatif lainnya yang bertentangan dengan norma hukum dan sosial</li>
+                        </ul>
+                    </li>
+                    <li>Karya belum pernah dilombakan sebelumnya dalam event apa pun.</li>
+                    <li>Panitia berhak melakukan diskualifikasi terhadap peserta yang terbukti melanggar ketentuan di atas tanpa perlu memberikan peringatan terlebih dahulu.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 6: AI, ASET, FORMAT KARYA             -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">09</span>Ketentuan AI dan Orisinalitas</h2>
+            
+            <div class="glass-card glass-card-gold">
+                <p>Dalam menjaga keseimbangan antara inovasi teknologi dan integritas kreatif, panitia menetapkan kebijakan penggunaan AI sebagai berikut:</p>
+                <ul>
+                    <li><strong>AI sebagai Alat Bantu Kreatif:</strong> Peserta diperbolehkan menggunakan kecerdasan buatan untuk proses <em>brainstorming</em>, eksplorasi ide, pencarian referensi visual, dan iterasi konsep awal.</li>
+                    <li><strong>Hasil Akhir Wajib Orisinal:</strong> Meskipun AI digunakan dalam tahap eksplorasi, desain final yang dikumpulkan harus merupakan hasil olah, kuraasi, dan sentuhan kreatif manual dari peserta sendiri.</li>
+                    <li><strong>Pemahaman Konsep Wajib:</strong> Peserta harus mampu menjelaskan dan mempertanggungjawabkan setiap keputusan desain, alur UX, dan pilihan visual dalam karyanya. Ketidakmampuan menjelaskan konsep dapat mengindikasikan penggunaan joki.</li>
+                    <li><strong>Sanksi Joki:</strong> Apabila terbukti peserta menggunakan joki atau karya orang lain, panitia berhak melakukan <strong>diskualifikasi permanen</strong> tanpa pengembalian biaya pendaftaran (jika berlaku) dan pencantuman nama dalam blacklist kompetisi internal.</li>
+                </ul>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">10</span>Aset yang Disediakan Panitia</h2>
+            
+            <div class="glass-card">
+                <p>Untuk menjamin konsistensi branding dan memudahkan peserta dalam proses desain, panitia menyediakan paket aset resmi berikut:</p>
+                <ul>
+                    <li><strong>Logo Kampus:</strong> File master logo Universitas Bina Insan dalam format vektor (SVG, AI, EPS) dan raster (PNG, JPG) dengan varian warna.</li>
+                    <li><strong>Foto Kampus:</strong> Koleksi foto gedung, fasilitas, dan lingkungan kampus beresolusi tinggi untuk kebutuhan visual interface.</li>
+                    <li><strong>Foto Kegiatan Mahasiswa:</strong> Dokumentasi kegiatan akademik dan non-akademik himpunan yang dapat diintegrasikan sebagai konten aplikasi.</li>
+                    <li><strong>Data Kampus:</strong> Informasi resmi mengenai program studi, fasilitas, prestasi, dan statistik kampus yang dapat dijadikan konten dummy (dummy content).</li>
+                    <li><strong>Media Sosial Kampus:</strong> Daftar akun resmi Instagram, YouTube, LinkedIn, dan TikTok Universitas Bina Insan untuk referensi branding digital.</li>
+                    <li><strong>Aset Promosi Tambahan:</strong> Flyer, poster, dan template media sosial yang dapat dijadikan inspirasi layout.</li>
+                </ul>
+                <p style="margin-top: 1rem;"><strong>Ketentuan Aset Tambahan:</strong> Peserta diperbolehkan mencari dan menggunakan aset tambahan dari sumber eksternal (ikon, ilustrasi, foto stock, font) dengan catatan harus <strong>valid, legal, dan tidak melanggar hak cipta</strong>. Penggunaan aset berlisensi wajib mematuhi ketentuan lisensi masing-masing (personal, commercial, atau CC0).</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">11</span>Format Karya</h2>
+            
+            <div class="glass-card">
+                <p>Seluruh peserta wajib mengumpulkan paket karya lengkap yang terdiri dari:</p>
+                <ul>
+                    <li><strong>File Desain Final:</strong> Hasil export desain dalam format siap publikasi (PNG, JPG, atau PDF).</li>
+                    <li><strong>Dokumen Penjelasan Konsep:</strong> PDF atau dokumen teks yang menjelaskan latar belakang ide, target pengguna, alur UX, pilihan warna/tipografi, dan keunggulan desain.</li>
+                    <li><strong>Prototype (Opsional namun Disarankan):</strong> Link prototype interaktif (Figma prototype, Adobe XD link, InVision, Marvel, dll.) untuk demonstrasi alur pengalaman pengguna.</li>
+                </ul>
+                
+                <div style="margin-top: 1rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--orange-light);">PNG</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--orange-light);">JPG</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--orange-light);">PDF</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--orange-light);">FIG</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--gold);">PSD</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--gold);">AI</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--gold);">XD</div>
+                    <div style="padding: 10px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 0.85rem; font-weight: 600; color: var(--grey-text);">DLL</div>
+                </div>
+            </div>
+
+            <div class="glass-card" style="margin-top: 1rem; border-color: var(--border-gold);">
+                <h3 style="margin-top: 0;">Format Penamaan File</h3>
+                <p style="margin-bottom: 0; font-family: monospace; font-size: 1.1rem; color: var(--gold); text-align: center; padding: 12px; background: rgba(0,0,0,0.3); border-radius: 8px;">
+                    NamaPeserta_NamaKarya_UIUX2026
+                </p>
+                <p style="margin-bottom: 0; margin-top: 8px; font-size: 0.85rem; text-align: center; color: var(--grey-text);">
+                    Contoh: <em>AhmadRizki_SmartCampusApp_UIUX2026.fig</em>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 7: SISTEM PENILAIAN                   -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        <div class="geo-orb" style="width: 400px; height: 400px; background: var(--gold); top: 50%; right: -150px; opacity: 0.08; filter: blur(100px);"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">12</span>Sistem Penilaian</h2>
+            <p style="margin-bottom: 1.5rem;">Penilaian dilakukan oleh panel juri profesional dengan komposisi bobot dan kriteria sebagai berikut:</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 30%;">Aspek Penilaian</th>
+                        <th style="width: 15%;">Bobot</th>
+                        <th>Deskripsi Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Kesesuaian Tema</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">20%</td>
+                        <td>Sejauh mana karya merefleksikan tema "UI/UX sebagai Wajah Kampus Digital Modern" dan subtema yang berkaitan (creative digital branding, smart campus experience, future education interface, modern educational technology, digital creative innovation).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kreativitas Ide</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">20%</td>
+                        <td>Originalitas konsep, kebaruan solusi, dan kemampuan peserta dalam menghadirkan perspektif unik yang belum umum dijumpai pada produk digital kampus.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kualitas Visual UI</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">20%</td>
+                        <td>Ketajaman estetika desain, harmoni warna, tipografi yang readable dan hierarki visual yang kuat, konsistensi ikonografi, serta kelengkapan komponen interface.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kualitas UX</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">15%</td>
+                        <td>Kemudahan navigasi, intuitivitas alur pengguna (user flow), efisiensi task completion, accessibility consideration, dan responsiveness layout.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Konsistensi Desain</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">10%</td>
+                        <td>Penerapan design system yang seragam di seluruh screen/pages, konsistensi spacing, padding, margin, dan penggunaan komponen yang berulang.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kerapian Desain</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">10%</td>
+                        <td>Organisasi layer/file, penamaan yang sistematis, kelengkapan dokumentasi desain, dan kebersihan visual secara keseluruhan.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Presentasi Konsep</strong></td>
+                        <td style="color: var(--gold); font-weight: 700;">5%</td>
+                        <td>Kemampuan peserta dalam menyampaikan gagasan melalui dokumen penjelasan yang runtut, logis, dan persuasif.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="glass-card" style="margin-top: 1.5rem;">
+                <h3>Prosedur Penilaian</h3>
+                <ol>
+                    <li><strong>Tahap Kurasi:</strong> Tim kurator melakukan verifikasi administrasi dan kelengkapan berkas. Karya yang tidak lengkap atau melanggar ketentuan akan dieliminasi di tahap ini.</li>
+                    <li><strong>Tahap Penilaian Juri:</strong> Setiap karya dinilai oleh minimal 2 (dua) juri independen menggunakan rubrik di atas. Skor dijumlahkan dan dirata-rata.</li>
+                    <li><strong>Tahap Deliberasi:</strong> Juri berkumpul untuk mendiskusikan peringkat akhir, terutama untuk penentuan juara 1–5 pada masing-masing kategori.</li>
+                    <li><strong>Keputusan Juri:</strong> Keputusan juri bersifat <strong>mutlak dan tidak dapat diganggu gugat</strong>.</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 8: WORKSHOP                           -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">13</span>Workshop</h2>
+            
+            <div class="glass-card">
+                <p>Workshop merupakan puncak rangkaian kegiatan yang dilaksanakan pada hari final, <strong>6 Juni 2026</strong>. Seluruh finalis dan peserta terpilih wajib hadir (kehadiran bersifat <em>highly recommended</em> bagi peserta non-finalis).</p>
+                
+                <h3>Susunan Acara Workshop</h3>
+                <table style="margin-top: 1rem;">
+                    <thead>
+                        <tr>
+                            <th style="width: 10%;">No</th>
+                            <th style="width: 35%;">Kegiatan</th>
+                            <th>Keterangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Pembukaan</strong></td>
+                            <td>Sambutan ketua panitia, perwakilan himpunan, dan pihak kampus.</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Workshop UI/UX</strong></td>
+                            <td>Sesi hands-on intensif bersama praktisi industri mengenai workflow modern UI/UX.</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Sharing Session</strong></td>
+                            <td>Cerita sukses, studi kasus nyata, dan pengalaman dari speaker tamu.</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Tanya Jawab</strong></td>
+                            <td>Forum diskusi interaktif antara peserta, juri, dan narasumber.</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Pengumuman Finalis</strong></td>
+                            <td>Presentasi singkat dan pengenalan karya finalis kepada audiens.</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td><strong>Pengumuman Pemenang</strong></td>
+                            <td>Penyampaian hasil akhir, pemberian sertifikat, medali, dan hadiah.</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td><strong>Dokumentasi</strong></td>
+                            <td>Sesi foto bersama, video testimoni, dan dokumentasi resmi kegiatan.</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td><strong>Penutup</strong></td>
+                            <td>Doa bersama, refleksi kegiatan, dan penutup resmi oleh MC.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="glass-card glass-card-gold" style="margin-top: 1.5rem;">
+                <h3>Materi Workshop</h3>
+                <p>Selama sesi workshop, peserta akan mendalami materi-materi berikut:</p>
+                <ul>
+                    <li><strong>Dasar UI/UX:</strong> Prinsip desain visual, hierarki, color theory, dan typography untuk digital product.</li>
+                    <li><strong>Branding Digital:</strong> Bagaimana membangun identitas visual yang kuat dan konsisten di ranah digital.</li>
+                    <li><strong>Modern Interface:</strong> Tren desain antarmuka terkini: glassmorphism, neumorphism, dark mode, micro-interactions, dan adaptive design.</li>
+                    <li><strong>Pengalaman Pengguna:</strong> User research methods, information architecture, wireframing, prototyping, dan usability testing dasar.</li>
+                    <li><strong>Tips Portofolio:</strong> Strategi menyusun portofolio UI/UX yang menarik perhatian recruiter dan klien.</li>
+                    <li><strong>Tren Desain Modern:</strong> Prediksi arah desain teknologi pendidikan dan smart campus di masa depan.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 9: PEMENANG & HADIAH                  -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        <div class="geo-orb" style="width: 350px; height: 350px; background: var(--orange); bottom: -120px; left: 50%; transform: translateX(-50%); opacity: 0.12; filter: blur(90px);"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">14</span>Pemenang dan Hadiah</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Penghargaan diberikan untuk <strong>5 peringkat terbaik</strong> pada masing-masing kategori.</p>
+            
+            <div class="prize-grid">
+                <div class="prize-category">
+                    <h3>Kategori SMA / SMK / MA</h3>
+                    <ul class="prize-list">
+                        <li>
+                            <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;">🥇 Juara 1</div>
+                            <div class="prize-amount">Rp750.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Merchandise</div>
+                        </li>
+                        <li>
+                            <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;">🥈 Juara 2</div>
+                            <div class="prize-amount">Rp500.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Merchandise</div>
+                        </li>
+                        <li>
+                            <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;">🥉 Juara 3</div>
+                            <div class="prize-amount">Rp350.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Merchandise</div>
+                        </li>
+                        <li>
+                            <div style="font-weight: 700; margin-bottom: 4px;">Juara 4</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Merchandise</div>
+                        </li>
+                        
+                    </ul>
+                </div>
+
+                <div class="prize-category">
+                    <h3>Kategori Umum</h3>
+                    <ul class="prize-list">
+                        <li>
+                            <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;">🥇 Juara 1</div>
+                            <div class="prize-amount">Rp750.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Merchandise</div>
+                        </li>
+                        <li>
+                            <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;">🥈 Juara 2</div>
+                            <div class="prize-amount">Rp500.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Merchandise</div>
+                        </li>
+                        <li>
+                            <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;">🥉 Juara 3</div>
+                            <div class="prize-amount">Rp350.000</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Merchandise</div>
+                        </li>
+    
+                        <li>
+                            <div style="font-weight: 700; margin-bottom: 4px;">Juara 5</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Merchandise</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="glass-card" style="margin-top: 2rem;">
+                <h3>Catatan Hadiah</h3>
+                <ul style="margin-bottom: 0;">
+                    <li>Hadiah uang pembinaan akan ditransfer ke rekening pemenang dalam waktu <strong>maksimal 14 hari kerja</strong> setelah pengumuman resmi.</li>
+                    <li>Medali, sertifikat, dan merchandise dapat diambil pada saat acara atau dikirimkan via kurir dengan biaya ditanggung pemenang (jika berhalangan hadir).</li>
+                    <li>Pemenang wajib mengisi formulir data perbankan dan alamat pengiriman yang akan diberikan oleh panitia.</li>
+                    <li>Pajak hadiah (jika ada) ditanggung oleh pemenang sesuai ketentuan peraturan perpajakan yang berlaku.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- PAGE 10: BENEFIT, CONTACT, PENUTUP         -->
+    <!-- ========================================== -->
+    <div class="page">
+        <div class="grid-bg"></div>
+        
+        <div class="container">
+            <h2><span class="section-num">15</span>Benefit Peserta</h2>
+            
+            <div class="glass-card">
+                <p>Seluruh peserta yang terdaftar dan mengikuti rangkaian kegiatan hingga selesai berhak mendapatkan benefit berikut:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 1rem;">
+                    <div style="padding: 16px; background: rgba(255,94,0,0.05); border-radius: 10px; border-left: 3px solid var(--orange);">
+                        <div style="font-weight: 700; color: var(--white); margin-bottom: 4px;">E-Sertifikat</div>
+                        <div style="font-size: 0.85rem; color: var(--grey-text);">Sertifikat partisipasi digital resmi dari panitia.</div>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,94,0,0.05); border-radius: 10px; border-left: 3px solid var(--orange);">
+                        <div style="font-weight: 700; color: var(--white); margin-bottom: 4px;">Pengalaman Lomba</div>
+                        <div style="font-size: 0.85rem; color: var(--grey-text);">Exposure kompetisi dengan standar industri kreatif.</div>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,215,0,0.05); border-radius: 10px; border-left: 3px solid var(--gold);">
+                        <div style="font-weight: 700; color: var(--white); margin-bottom: 4px;">Workshop UI/UX</div>
+                        <div style="font-size: 0.85rem; color: var(--grey-text);">Akses materi eksklusif dan sesi praktik langsung.</div>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,215,0,0.05); border-radius: 10px; border-left: 3px solid var(--gold);">
+                        <div style="font-weight: 700; color: var(--white); margin-bottom: 4px;">Relasi Profesional</div>
+                        <div style="font-size: 0.85rem; color: var(--grey-text);">Jaringan dengan sesama desainer, juri, dan praktisi.</div>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,94,0,0.05); border-radius: 10px; border-left: 3px solid var(--orange);">
+                        <div style="font-weight: 700; color: var(--white); margin-bottom: 4px;">Wawasan Digital</div>
+                        <div style="font-size: 0.85rem; color: var(--grey-text);">Pengetahuan mendalam seputar tren teknologi kreatif.</div>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,94,0,0.05); border-radius: 10px; border-left: 3px solid var(--orange);">
+                        <div style="font-weight: 700; color: var(--white); margin-bottom: 4px;">Portofolio</div>
+                        <div style="font-size: 0.85rem; color: var(--grey-text);">Karya final yang siap dijadikan aset profesional.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">16</span>Contact Person</h2>
+            
+            <div class="glass-card">
+                <p>Untuk informasi lebih lanjut, klarifikasi teknis, atau bantuan administrasi, silakan hubungi contact person resmi panitia:</p>
+                
+                <div class="contact-grid" style="margin-top: 1.5rem;">
+                    <div class="contact-item">
+                        <div class="contact-label">Contact Person 1</div>
+                        <div class="contact-value contact-placeholder">(Belum ditentukan)</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Contact Person 2</div>
+                        <div class="contact-value contact-placeholder">(Belum ditentukan)</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-label">Instagram Resmi</div>
+                        <div class="contact-value contact-placeholder">(Belum ditentukan)</div>
+                    </div>
+                   
+                </div>
+
+                <div style="margin-top: 1.5rem; padding: 16px; background: rgba(255,94,0,0.05); border-radius: 10px; border: 1px dashed var(--border-glass);">
+                    <div style="font-weight: 700; color: var(--orange-light); margin-bottom: 8px;">🔗 Link Penting</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--grey-text); margin-bottom: 4px;">Pendaftaran:</div>
+                            <div class="contact-placeholder" style="color: var(--white);">(Belum ditentukan)</div>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--grey-text); margin-bottom: 4px;">Pengumpulan Karya:</div>
+                            <div class="contact-placeholder" style="color: var(--white);">(Belum ditentukan)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <h2><span class="section-num">17</span>Penutup</h2>
+            
+            <div class="glass-card glass-card-gold">
+                <p>Demikianlah <strong>Guidebook Resmi Lomba UI/UX Design & Workshop 2026</strong> yang disusun sebagai pedoman utama dan acuan tunggal bagi seluruh peserta dan panitia selama rangkaian kegiatan berlangsung. Dokumen ini mencakup seluruh aspek teknis, administrasi, kreatif, dan legal yang mengatur jalannya kompetisi.</p>
+                
+                <p>Panitia menyadari bahwa dinamika teknologi dan kreativitas selalu berkembang; oleh karena itu, segala bentuk update, addendum, atau koreksi terhadap isi guidebook ini akan diumumkan melalui kanal resmi yang telah ditetapkan dan dianggap sah sejak tanggal publikasinya.</p>
+                
+                <p>Kami mengajak seluruh peserta untuk menjunjung tinggi nilai sportivitas, orisinalitas, dan semangat kolaboratif. Kompetisi ini bukan sekadar ajang mencari pemenang, melainkan wahana pembelajaran bersama untuk memajukan ekosistem desain digital di lingkungan kampus dan masyarakat luas.</p>
+                
+                <p style="color: var(--white); font-weight: 500; text-align: center; margin-top: 2rem; font-size: 1.05rem;">
+                    Selamat berkompetisi. Semangat menginovasi. Wujudkan kampus digital masa depan.<br>
+                    <span style="color: var(--gold);">#UIUX2026 #WajahKampusDigital #BinainsanKreatif</span>
+                </p>
+                
+                <div style="margin-top: 2.5rem; text-align: center;">
+                    <div style="font-size: 0.85rem; color: var(--grey-text); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px;">Hormat kami,</div>
+                    <div style="font-weight: 700; color: var(--white); font-size: 1.1rem;">Panitia Pelaksana</div>
+                    <div style="color: var(--orange-light); font-weight: 600;">Lomba UI/UX Design & Workshop 2026</div>
+                    <div style="color: var(--gold); font-size: 0.9rem; margin-top: 4px;">Himpunan Mahasiswa Prodi Informatika</div>
+                    <div style="color: var(--grey-text); font-size: 0.85rem;">Universitas Bina Insan</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem; text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.2); letter-spacing: 0.1em; text-transform: uppercase;">
+                Guidebook Resmi · Edisi 2026 · Hak Cipta Dilindungi · Himpunan Mahasiswa Prodi Informatika Universitas Bina Insan
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -82,16 +82,21 @@
 
         /* ========== TYPOGRAPHY ========== */
         h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-        }
-
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
+    
+    /* 1. Keep the webkit prefix for older/Safari support */
+    -webkit-background-clip: text; 
+    
+    /* 2. ADD THIS LINE: The standard property for modern compatibility */
+    background-clip: text; 
+    
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase; /* Assuming this is what you were typing! */
+}
         h2 {
             font-size: 1.6rem;
             font-weight: 700;
@@ -748,8 +753,7 @@
         <a href="#workshop" onclick="closeMenu()">Acara</a>
         <a href="#benefit" onclick="closeMenu()">Benefit</a>
         <a href="#contact" onclick="closeMenu()">Contact</a>
-        <a href="#daftar" onclick="closeMenu()" style="background: var(--orange-light); color: white !important; padding: 6px 14px; border-radius: 6px; font-weight: 600; margin-left: 4px; opacity: 1 !important;">Daftar</a>
-    </div>
+        </div>
 </nav>
     <!-- PRINT BUTTON -->
     <div class="no-print">
@@ -975,7 +979,7 @@
                         <h3 style="margin-top: 0; color: var(--orange-light);">Kategori Pelajar</h3>
                         <ul style="margin-bottom: 0; padding-left: 20px;">
                             <li>SMA / SMK / MA sederajat</li>
-                            <li>Bersifat <strong>Kelompok</strong> (maksimal 3 orang)</li>
+                            <li>Bersifat <strong>Kelompok</strong> (minimal 2 orang dan maksimal 3 orang)</li>
                         </ul>
                     </div>
                     <!-- Kategori Umum -->
@@ -985,7 +989,7 @@
                             <li>Mahasiswa aktif (semua jurusan & universitas)</li>
                             <li>Umum (pekerja, freelancer, dll.)</li>
                             <li>Batas usia maksimal <strong>25 tahun</strong> per 6 Juni 2026</li>
-                            <li>Bersifat <strong>Kelompok</strong> (maksimal 3 orang)</li>
+                            <li>Bersifat <strong>Kelompok</strong> (minimal 2 orang dan maksimal 3 orang)</li>
                         </ul>
                     </div>
                 </div>
@@ -1302,19 +1306,19 @@
                     <h3>Kategori SMA / SMK / MA</h3>
                     <ul class="prize-list">
                         <li>
-                            <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;">🥇 Juara 1</div>
+                            <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;"> Juara 1</div>
                             <div class="prize-amount">Rp600.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Uang pembinaan</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali  · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
-                            <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;">🥈 Juara 2</div>
+                            <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;"> Juara 2</div>
                             <div class="prize-amount">Rp450.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Uang pembinaan</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali  · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
-                            <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;">🥉 Juara 3</div>
+                            <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;"> Juara 3</div>
                             <div class="prize-amount">Rp300.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Uang pembinaan</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali  · Sertifikat · Uang pembinaan</div>
                         </li> 
                     </ul>
                 </div>
@@ -1325,17 +1329,17 @@
                         <li>
                             <div style="color: var(--gold); font-weight: 700; margin-bottom: 4px;">🥇 Juara 1</div>
                             <div class="prize-amount">Rp600.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Emas · Sertifikat · Uang pembinaan</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
                             <div style="color: var(--grey-text); font-weight: 700; margin-bottom: 4px;">🥈 Juara 2</div>
                             <div class="prize-amount">Rp450.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perak · Sertifikat · Uang pembinaan</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Uang pembinaan</div>
                         </li>
                         <li>
                             <div style="color: #cd7f32; font-weight: 700; margin-bottom: 4px;">🥉 Juara 3</div>
                             <div class="prize-amount">Rp30.000</div>
-                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali Perunggu · Sertifikat · Uang pembinaan</div>
+                            <div style="font-size: 0.85rem; color: var(--grey-text);">Medali · Sertifikat · Uang pembinaan</div>
                         </li>
                     </ul>
                 </div>
